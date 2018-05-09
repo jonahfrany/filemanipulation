@@ -4,6 +4,7 @@
 
 echo "export now=$(date +"%m_%d_%Y")" >> /app/create_file.sh
 echo "dd if=/dev/urandom of=/data/output_file_$now.txt count=1024 bs=2024" >> /app/create_file.sh
+chmod +x /app/create_file.sh
 crontab -l > user_cron
 echo "10 * * * * ./app/create_file.sh" >> user_cron
 crontab user_cron
